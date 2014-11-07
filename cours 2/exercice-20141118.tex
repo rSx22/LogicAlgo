@@ -1,0 +1,104 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+
+\newcounter{problem}
+\newcounter{solution}
+
+\renewcommand{\abstractname}{Logique et Algorithmie - 2014} 
+
+\newcommand\Problem{%
+  \stepcounter{problem}%
+  \textbf{\theproblem.}~%
+  \setcounter{solution}{0}%
+}
+
+\newcommand\TheSolution{%
+  \textbf{Solution:}\\%
+}
+
+\newcommand\Hint{%
+  \textbf{Hint:}~%
+}
+
+\newcommand\ASolution{%
+  \stepcounter{solution}%
+  \textbf{Solution \thesolution:}\\%
+}
+\parindent 0in
+\parskip 1em
+
+\begin{document}
+
+\begin{abstract}
+Voilà une petite série d'exercices pour vous entraîner sur les notions de logiques et d'algorithmie que nous avons vu lors des deux premiers cours. À titre indicatif : ce document a été rédigé à l'aide du langage de formatage \TeX\space  inventé par Donald Knuth lorsqu'il rédigeait \textit{The Art Of Computer Programming} en 1977 !
+\end{abstract}
+
+\textbf{Logique :}\\
+
+\Problem Écrivez les tables de vérités des propositions suivantes :
+
+\Hint Pour être sûr de ne pas en oublier : il y a \(2^n\) lignes lorsqu'il y a \(n\) variables booléennes différentes. Par exemple si les variables sont \(P\), \(Q\) et \(R\) alors il y aura \(2^3 = 8\) lignes dans notre table de vérité.
+
+\Hint On rappelle également que \(\land\) signifie \textbf{et}, que \(\lor\) signifie \textbf{ou} et que \(\neg\) signifie \textbf{non}.
+
+\[ (P \land Q) \lor R \]
+\[ (P \lor Q) \land R \]
+\[ (P \lor Q) \land \neg P \]
+
+\Problem Parmis les propositions suivantes, lesquelles sont satisfaisables ? Donnez une solution si c'est le cas ou justifiez (à l'aide de mots ou d'une table de vérité) dans le cas contraire.
+
+\Hint On rappelle qu'une proposition est satisfaisable si on peut trouver une configuration des variables (ie : une ligne dans la table de vérité) telle que la proposition est vraie. Il peut y en avoir plusieurs.
+
+\[ (P \land \neg P) \land Q \]
+\[ (P \land \neg P) \lor Q \]
+\[ (P \land \neg Q) \lor Q \]
+\[ (P \land \neg Q) \lor (\neg P \land Q) \]
+
+\Hint Pour les proposition suivante, n'essayez pas d'écrire la table de vérité, il vous faudrait écrire jusqu'à \(2^{26} = 67108864\) lignes !
+
+\[ A \land \neg B \land C \land \neg D \dots \land \neg X \land Y \land \neg Z \]
+\[ A \land \neg (B \lor C \dots \lor Z) \]
+\[ A \land \neg (A \lor B \lor C \dots \lor Z) \]
+
+
+\Problem Simplifiez les conditions suivantes :
+
+\Hint Choisissez astucieusement vos variables booléennes (P, Q, etc.) pour traduire en langage logiques
+
+\[ ( x > 0 \text{ or } ( x \leq 0 \text{ and } y > 100 )) \]
+\[ \text{ not } (x \neq 0 \text{ or } y \neq 0) \]
+\[ \text{ not } (x \neq 0 \text{ or } y \leq 0) \]
+
+\textbf{Algorithmie :} On se propose d'étudier le code suivant qui calcule le \(n\)ième nombre de la suite de Fibonnaci:
+
+\begin{verbatim}
+Entrée : n
+Début :
+  a <- 0
+  b <- 1
+  tant que n > 0
+    t <- a+b
+    a <- b
+    n <- n-1
+  Retour : b
+\end{verbatim}
+
+\Problem Écrivez pas à pas l'exécution de cette fonction pour \(n=8\)
+
+\begin{table}[h]
+\begin{tabular}{lllll}
+ \text{step} & 1  & 2 & 3 & \dots  \\ \hline
+ \verb|n| &  &  &  &  \\ \hline
+ \verb|a| &  &  &  &  \\ \hline
+ \verb|b| &  &  &  &  \\ \hline
+\end{tabular}
+\end{table}
+
+\Problem Montrez que cette fonction est un algorithme
+
+\Problem Écrivez cette fonction en PHP. Testez là avec des valeurs de plus en plus grande de \(n\). Comptez le nombre d'itération effectuées. Tracez le graphe de sa complexité.
+
+\Hint N'oubliez pas que le graphe de la complexité se trace en fonction de la \textit{taille} de \(n\) et non pas de sa valeur !
+
+\end{document}
